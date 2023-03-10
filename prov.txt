@@ -1,0 +1,43 @@
+// Написать программу, которая из имеющегося массива строк сформирует массив из строк,
+// длина которых меньше, либо равна 3 символа.
+
+int Len(string[] array)
+{
+    int l = 0;
+    for (int i = 0; i < array.Length; i++)
+    {       
+        if (array[i].Length <= 3) l++; 
+    }
+    return l;
+}
+
+void NewArray(string[] array, string[] new_array)
+{
+    int j = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+    if(array[i].Length <= 3)
+        {
+        new_array[j] = array[i];
+        j++;
+        }
+    }
+}
+
+void WriteArray(string[] array)
+{
+    Console.Write("[\"");
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (i < (array.Length - 1)) Console.Write(array[i] + "\", \"");       
+        else Console.Write(array[i] + "\"]");        
+    }
+}
+
+string[] array = {"hello", "2", "world", ":-)"};
+int len = Len(array);
+string[] new_array = new string[len];
+WriteArray(array);
+Console.Write(" -> "); 
+NewArray(array, new_array);
+WriteArray(new_array);
